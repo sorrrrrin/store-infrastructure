@@ -3,7 +3,7 @@ version: '3.7'
 services:
   minikube:
     build:
-      context: .
+      context: ./minikube
       dockerfile: Dockerfile.minikube
     privileged: true  # Required for Minikube to run with Docker
     volumes:
@@ -17,7 +17,7 @@ services:
 
   kubectl:
     build:
-      context: .
+      context: ./kubectl
       dockerfile: Dockerfile.kubectl
     depends_on:
       - minikube  # Ensure kubectl starts only after Minikube is up and running
