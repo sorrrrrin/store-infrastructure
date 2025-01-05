@@ -4,7 +4,7 @@ metadata:
   name: elasticsearch
 spec:
   serviceName: elasticsearch
-  replicas: 3  # Elasticsearch typically runs with more than one replica for resilience
+  replicas: 2  # Elasticsearch typically runs with more than one replica for resilience
   selector:
     matchLabels:
       app: elasticsearch

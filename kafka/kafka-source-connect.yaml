@@ -1,0 +1,18 @@
+apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaConnector
+metadata:
+  name: my-jdbc-source-connector
+  labels:
+    strimzi.io/cluster: kafka-cluster
+spec:
+  class: io.confluent.connect.jdbc.JdbcSourceConnector
+  tasksMax: 1
+  config:
+    connection.url: jdbc:mysql://mysql-server:3306/mydatabase
+    connection.user: myuser
+    connection.password: mypassword
+    table.whitelist: mytable
+    mode: incrementing
+    incrementing.column.name: id
+    topic.prefix: mytopic-
+    poll.interval.ms: 5000

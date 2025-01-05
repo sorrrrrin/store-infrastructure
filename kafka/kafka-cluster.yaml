@@ -1,0 +1,34 @@
+apiVersion: kafka.strimzi.io/v1beta2
+kind: Kafka
+metadata:
+  name: kafka-cluster
+spec:
+  kafka:
+    replicas: 1
+    listeners:
+      - name: plain
+        port: 9092
+        type: internal
+        tls: false
+      - name: external2
+        port: 9093
+        type: loadbalancer
+        tls: false
+#      - name: external
+#        port: 30093
+#        type: nodeport
+#        tls: false
+    config:
+      advertised.listeners: PLAINTEXT://kafka-cluster-kafka-bootstrap.kafka.svc.cluster.local:9092,EXTERNAL2://127.0.0.1:9093
+      listener.security.protocol.map: EXTERNAL:PLAINTEXT,INTERNAL:PLAINTEXT
+    storage:
+      type: persistent-claim
+      size: 1Gi
+  zookeeper:
+    replicas: 1
+    storage:
+      type: persistent-claim
+      size: 1Gi
+  entityOperator:
+    topicOperator: {}
+    userOperator: {}

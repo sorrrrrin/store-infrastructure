@@ -1,0 +1,14 @@
+apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaTopic
+metadata:
+  name: kafka-topic
+  labels:
+    strimzi.io/cluster: kafka-cluster
+    strimzi.io/kind: Kafka
+    strimzi.io/name: kafka-cluster-kafka
+spec:
+  partitions: 1
+  replicas: 1
+  config:
+    retention.ms: 10000000 # -1 means infinite retention, or you can set a specific value in milliseconds
+    segment.bytes: 1073741824 #1073741824

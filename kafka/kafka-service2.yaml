@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kafka-service2
+spec:
+  ports:
+    - name: kafka
+      port: 30094
+      targetPort: 30094
+      nodePort: 30094
+  selector:
+    strimzi.io/cluster: kafka-cluster
+    strimzi.io/kind: Kafka
+    strimzi.io/name: kafka-cluster-kafka
+  type: NodePort
