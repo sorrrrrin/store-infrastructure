@@ -6,7 +6,7 @@ spec:
   kafka:
     replicas: 1
     listeners:
-      - name: plain
+      - name: internal
         port: 9092
         type: internal
         tls: false
@@ -18,9 +18,13 @@ spec:
 #        port: 30093
 #        type: nodeport
 #        tls: false
-    config:
-      advertised.listeners: PLAINTEXT://kafka-cluster-kafka-bootstrap.kafka.svc.cluster.local:9092,EXTERNAL2://127.0.0.1:9093
-      listener.security.protocol.map: EXTERNAL:PLAINTEXT,INTERNAL:PLAINTEXT
+#    config:
+#      advertised.listeners: EXTERNAL2://127.0.0.1:9093
+#      listener.security.protocol.map: EXTERNAL2:PLAINTEXT
+#      advertised.listeners: INTERNAL://kafka-cluster-kafka-bootstrap.kafka:9092,EXTERNAL2://127.0.0.1:9093
+#      listener.security.protocol.map: INTERNAL:PLAINTEXT,EXTERNAL2:PLAINTEXT
+#      advertised.listeners: PLAINTEXT://kafka-cluster-kafka-bootstrap.kafka:9092,EXTERNAL2://127.0.0.1:9093
+#      listener.security.protocol.map: EXTERNAL2:PLAINTEXT,INTERNAL:PLAINTEXT
     storage:
       type: persistent-claim
       size: 1Gi
