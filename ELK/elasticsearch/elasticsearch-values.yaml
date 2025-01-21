@@ -1,0 +1,20 @@
+replicas: 1
+minimumMasterNodes: 1
+
+service:
+  type: ClusterIP
+  ports:
+    - port: 9200  # Elasticsearch HTTP port
+      targetPort: 9200
+      protocol: TCP
+      name: http
+    - port: 9300  # Elasticsearch transport port
+      targetPort: 9300
+      protocol: TCP
+      name: transport
+
+volumeClaimTemplate:
+  accessModes: ["ReadWriteOnce"]
+  resources:
+    requests:
+      storage: 1Gi

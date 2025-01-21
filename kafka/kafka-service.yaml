@@ -8,7 +8,7 @@ spec:
       port: 9094
       targetPort: 9094
   selector:
-    strimzi.io/cluster: kafka-cluster
+    strimzi.io/cluster: my-cluster
     strimzi.io/kind: Kafka
     strimzi.io/name: kafka-cluster-kafka
   type: LoadBalancer

@@ -1,0 +1,20 @@
+elasticsearchHosts: "https://elasticsearch-master.monitoring:9200"
+
+service:
+  type: ClusterIP
+  ports:
+    - port: 5601  # Kibana HTTP port
+      targetPort: 5601
+      protocol: TCP
+      name: http
+
+ingress:
+  enabled: false
+
+#ingress:
+#  enabled: true
+#  className: "nginx"
+#  hosts:
+#    - host: kibana-elk.s9.devopscloud.link
+#      paths:
+#        - path: /
