@@ -1,20 +1,25 @@
-replicas: 1
-minimumMasterNodes: 1
-
-service:
-  type: ClusterIP
-  ports:
-    - port: 9200  # Elasticsearch HTTP port
-      targetPort: 9200
-      protocol: TCP
-      name: http
-    - port: 9300  # Elasticsearch transport port
-      targetPort: 9300
-      protocol: TCP
-      name: transport
+replicas: 1 # Adjust based on your needs (e.g., 1 for a single-node cluster)
+#masterReplicas: 3
+#dataReplicas: 3
 
 volumeClaimTemplate:
+  storageClassName: standard
   accessModes: ["ReadWriteOnce"]
   resources:
     requests:
-      storage: 1Gi
+      storage: 500Mi # Specify the desired storage size per node
+
+elasticsearch:
+  extraEnvs: # Optional environment variables to expose the HTTP port externally
+    - name: discovery.type
+      value: single-node
+  config:
+    elasticsearch.yml: |
+      discovery.type: single-node
+#  resources:
+#    requests:
+#      memory: "1Gi"
+#      cpu: "1"
+#    limits:
+#      memory: "2Gi"
+#      cpu: "2"

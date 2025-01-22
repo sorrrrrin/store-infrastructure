@@ -1,4 +1,13 @@
-elasticsearchHosts: "https://elasticsearch-master.monitoring:9200"
+elasticsearch:
+  uris: https://elasticsearch-master:9200
+  hosts: ["https://localhost:9200"]
+  username: elastic
+  password: eZPDIVlS5yo0FHUA
+  repositories:
+      enabled: true
+  ssl:
+    enabled: true
+    verificationMode: full
 
 service:
   type: ClusterIP
