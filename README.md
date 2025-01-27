@@ -20,6 +20,7 @@ Tech stack:
 * Spring Boot
 * Spring Data Jpa
 * Spring Data Elastic
+* Spring Micrometer - for metrics to be sent to Prometheus and visualized in Grafana
 * Docker
 * Kubernetes (Minikube) - everything is deployed in this kubernetes cluster as docker containers, so all microservices, database and tools
 * Postgresql
@@ -30,6 +31,7 @@ Tech stack:
 * Elastic search & Spring Data Elastic for indexing and searching products
 * Elastic Stack (Elasticsearch, Logstash, Kibana) - for logs monitoring 
 * Prometheus & Grafana for metrics and traces monitoring
+
 
 * Lombock - generates boilerplate code
 * MapStruct - generates mappers between entities and Dtos objects
