@@ -2,7 +2,7 @@ elasticsearch:
   uris: https://elasticsearch-master:9200
   hosts: ["https://localhost:9200"]
   username: elastic
-  password: eZPDIVlS5yo0FHUA
+  password: YBtrtVVg1FWjHt35
   repositories:
       enabled: true
   ssl:

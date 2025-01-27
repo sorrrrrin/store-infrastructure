@@ -5,21 +5,58 @@ replicas: 1 # Adjust based on your needs (e.g., 1 for a single-node cluster)
 volumeClaimTemplate:
   storageClassName: standard
   accessModes: ["ReadWriteOnce"]
+#  persistentVolumeReclaimPolicy: Delete
+  persistentVolumeReclaimPolicy: Retain
   resources:
     requests:
       storage: 500Mi # Specify the desired storage size per node
+      memory: "1Gi"
+      cpu: "500Mi"
+    limits:
+      memory: "2Gi"
+      cpu: "1"
 
-elasticsearch:
-  extraEnvs: # Optional environment variables to expose the HTTP port externally
-    - name: discovery.type
-      value: single-node
-  config:
-    elasticsearch.yml: |
-      discovery.type: single-node
-#  resources:
-#    requests:
-#      memory: "1Gi"
-#      cpu: "1"
-#    limits:
-#      memory: "2Gi"
-#      cpu: "2"
+node:
+  roles:
+    - master
+    - data
+    - ingest
+
+discovery:
+  seedHosts: []
+  zenMinimumMasterNodes: 1
+
+cluster:
+  initialMasterNodes: []
+  name: "elasticsearch"
+
+esConfig:
+  elasticsearch.yml: |
+    cluster.initial_master_nodes: []
+    discovery.seed_hosts: []
+    cluster.name: "elasticsearch"
+    node.roles: ["master", "data", "ingest"]
+    ingest.geoip.downloader.enabled: false
+
+#elasticsearch:
+#  security:
+#    enabled: false # Disable security
+#  http:
+#    enabled: true  # Enable the HTTP connection
+#    port: 9200     # Set the HTTP port (default is 9200)
+#  transport:
+#    ssl:
+#      enabled: false      # Disable SSL on transport layer as well
+#  extraEnvs: # Optional environment variables to expose the HTTP port externally
+#    - name: discovery.type
+#      value: single-node
+#  config:
+#    elasticsearch.yml: |
+#      discovery.type: single-node
+#      xpack.security.enabled: false
+#      xpack.security.enrollment.enabled: false
+#      xpack.security.http.ssl.enabled: false
+#      xpack.security.transport.ssl.enabled: false
+#      xpack.security.transport.ssl.verification_mode: none
+#      xpack.security.http.ssl.client_authentication: none
+#      xpack.security.authc.realms.pki.pki1.enabled: false
