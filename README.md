@@ -1,14 +1,18 @@
 # store-infrastructure
 
 Microservices:
-* infrastructure - project holds all devops infrastructure configurations
-https://github.com/sorrrrrin/store-infrastructure
-
+* For demo purposes, it is a store application with 3 microservices: 
 * catalog-service
 https://github.com/sorrrrrin/store-catalog-service
 
 * order-service
 https://github.com/sorrrrrin/store-order-service
+
+* customer-service - #TODO (will be added later)
+
+* infrastructure - project holds all devops infrastructure configurations
+  https://github.com/sorrrrrin/store-infrastructure
+
 
 Tech stack:
 * Java 17
@@ -28,7 +32,7 @@ Tech stack:
 * MapStruct - generates mappers between entities and Dtos objects
 
 
-Will be added next
-* customer-service - new microservice
+To be added next:
 * Tests
-
+* CI/CD pipeline
+* Deployment to cloud (AWS and GCP)
