@@ -18,16 +18,18 @@ Tech stack:
 * Java 17
 * Maven
 * Spring Boot
+* Spring Data Jpa
+* Spring Data Elastic
 * Docker
-* Kubernetes (Minikube) - everything is deployed as deployments in this kubernetes cluster as docker containers, so all microservices and tools and database
+* Kubernetes (Minikube) - everything is deployed in this kubernetes cluster as docker containers, so all microservices, database and tools
 * Postgresql
 * Hibernate
 * Kafka - for microservice events communication architecture
 * Rest API - for microservice synchronous communication and frontend
 
 * Elastic search & Spring Data Elastic for indexing and searching products
-* Prometheus & Grafana for metrics and tracesmonitoring
-* Elastic Stack (Elasticsearch, Logstash, Kibana) - for logs monitoring
+* Elastic Stack (Elasticsearch, Logstash, Kibana) - for logs monitoring 
+* Prometheus & Grafana for metrics and traces monitoring
 
 * Lombock - generates boilerplate code
 * MapStruct - generates mappers between entities and Dtos objects
