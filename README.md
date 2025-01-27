@@ -2,16 +2,16 @@
 
 Microservices:
 * For demo purposes, it is a store application with 3 microservices: 
-* catalog-service
+* catalog-service (work in progress)
 https://github.com/sorrrrrin/store-catalog-service
 
-* order-service
+* order-service  (work in progress)
 https://github.com/sorrrrrin/store-order-service
 
-* customer-service - #TODO (will be added later)
+* customer-service - (will be added later)
 
-* infrastructure - project holds all devops infrastructure configurations
-  https://github.com/sorrrrrin/store-infrastructure
+* infrastructure - project holds all devops infrastructure configurations  (work in progress)
+https://github.com/sorrrrrin/store-infrastructure
 
 
 Tech stack:
@@ -36,3 +36,4 @@ To be added next:
 * Tests
 * CI/CD pipeline
 * Deployment to cloud (AWS and GCP)
+...
