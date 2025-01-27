@@ -19,8 +19,9 @@ Tech stack:
 * Maven
 * Spring Boot
 * Spring Data Jpa
-* Spring Data Elastic
-* Spring Micrometer - for metrics to be sent to Prometheus and visualized in Grafana
+* Spring Data Elastic - used with Elastic search for indexing and searching products
+* Spring Micrometer - used for metrics to be sent to Prometheus and visualized in Grafana
+* Spring Kafka - used for microservices events communication with Kafka
 * Docker
 * Kubernetes (Minikube) - everything is deployed in this kubernetes cluster as docker containers, so all microservices, database and tools
 * Postgresql
