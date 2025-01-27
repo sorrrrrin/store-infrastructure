@@ -37,4 +37,5 @@ To be added next:
 * Tests
 * CI/CD pipeline
 * Deployment to cloud (AWS and GCP)
+* Frontend (React)
 ...
