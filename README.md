@@ -21,6 +21,7 @@ Tech stack:
 * Docker
 * Kubernetes (Minikube) - everything is deployed as deployments in this kubernetes cluster as docker containers, so all microservices and tools and database
 * Postgresql
+* Hibernate
 * Kafka - for microservice events communication architecture
 * Rest API - for microservice synchronous communication and frontend
 
