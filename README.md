@@ -9,14 +9,16 @@ https://github.com/sorrrrrin/store-catalog-service
 * order-service - Manages orders, order items and order status. (work in progress)
 https://github.com/sorrrrrin/store-order-service
 
-* user-service - (will be added next) - Manages users, roles (customers, admins) and permissions. 
-
+* user-service - (will be implemented next) - Manages users, roles (customers, admins) and permissions.
+https://github.com/sorrrrrin/store-user-service
+* 
 * infrastructure - Manages devops infrastructure configurations (work in progress)
 https://github.com/sorrrrrin/store-infrastructure
 
 TODO next:
 * Tests (unit & integration tests with Junit & Mockito)
 * Exception handling (+ tests)
+* Add basic functionality to user-service
 * Add JWT token authentication & authorization with Spring default security on USERS and AUTHORITIES tables (+ tests)
 
 Tech stack:
