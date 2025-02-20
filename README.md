@@ -9,7 +9,7 @@ https://github.com/sorrrrrin/store-catalog-service
 * order-service - Manages orders, order items and order status. (work in progress)
 https://github.com/sorrrrrin/store-order-service
 
-* users-service - (will be added next) - Manages users, roles (customers, admins) and permissions. 
+* user-service - (will be added next) - Manages users, roles (customers, admins) and permissions. 
 
 * infrastructure - Manages devops infrastructure configurations (work in progress)
 https://github.com/sorrrrrin/store-infrastructure
