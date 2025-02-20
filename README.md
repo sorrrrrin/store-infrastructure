@@ -1,18 +1,23 @@
 # store-infrastructure
 
 Microservices:
-* For demo purposes, it is a store application with 3 microservices: 
-* catalog-service (work in progress)
+* For demo purposes, it is a store application with 3 microservices:
+
+* catalog-service - Manages products, categories and inventory. (work in progress)
 https://github.com/sorrrrrin/store-catalog-service
 
-* order-service  (work in progress)
+* order-service - Manages orders, order items and order status. (work in progress)
 https://github.com/sorrrrrin/store-order-service
 
-* customer-service - (will be added later)
+* users-service - (will be added next) - Manages users, roles (customers, admins) and permissions. 
 
-* infrastructure - project holds all devops infrastructure configurations  (work in progress)
+* infrastructure - Manages devops infrastructure configurations (work in progress)
 https://github.com/sorrrrrin/store-infrastructure
 
+TODO next:
+* Tests (unit & integration tests with Junit & Mockito)
+* Exception handling (+ tests)
+* Add JWT token authentication & authorization with Spring default security on USERS and AUTHORITIES tables (+ tests)
 
 Tech stack:
 * Java 17
@@ -38,9 +43,9 @@ Tech stack:
 * MapStruct - generates mappers between entities and Dtos objects
 
 
-To be added next:
+To be added later:
 * Tests
 * CI/CD pipeline
-* Deployment to cloud (AWS and GCP)
+* Deployment to cloud (AWS/ GCP)
 * Frontend (React)
 ...
