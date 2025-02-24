@@ -11,13 +11,13 @@ https://github.com/sorrrrrin/store-order-service
 
 * user-service - (will be implemented next) - Manages users, roles (customers, admins) and permissions.
 https://github.com/sorrrrrin/store-user-service
-* 
+
 * infrastructure - Manages devops infrastructure configurations (work in progress)
 https://github.com/sorrrrrin/store-infrastructure
 
 TODO next:
+* Exception handling (+tests) - Work in progress (1/2 DONE)
 * Tests (unit & integration tests with Junit & Mockito)
-* Exception handling (+ tests)
 * Add basic functionality to user-service
 * Add JWT token authentication & authorization with Spring default security on USERS and AUTHORITIES tables (+ tests)
 
@@ -35,18 +35,27 @@ Tech stack:
 * Hibernate
 * Kafka - for microservice events communication architecture
 * Rest API - for microservice synchronous communication and frontend
-
+* OpenAPI/Swagger - for documentation
 * Elastic search & Spring Data Elastic for indexing and searching products
 * Elastic Stack (Elasticsearch, Logstash, Kibana) - for logs monitoring 
 * Prometheus & Grafana for metrics and traces monitoring
-
-
 * Lombock - generates boilerplate code
 * MapStruct - generates mappers between entities and Dtos objects
 
+REST API best practices covered:
+* Exception handling - DONE
+* Documentation (OpenAPI/Swagger) - DONE 
+* Security - Work In Progress
+* Test in development with tools like Postman - DONE
+* Use HTTP Request Methods (POST, GET, PUT, PATCH, DELETE) - DONE
+* Use HTTP Response status (200, 404, ...) - DONE
+* Use nouns (plural form) for resource names - DONE
+* Don't send secure info in URI - DONE
+
+Microservice Architecture design patterns covered:
+* Work in progress
 
 To be added later:
-* Tests
 * CI/CD pipeline
 * Deployment to cloud (AWS/ GCP)
 * Frontend (React)
