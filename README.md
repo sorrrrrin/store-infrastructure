@@ -9,16 +9,14 @@ https://github.com/sorrrrrin/store-catalog-service
 * order-service - Manages orders, order items and order status. (work in progress)
 https://github.com/sorrrrrin/store-order-service
 
-* user-service - (will be implemented next) - Manages users, roles (customers, admins) and permissions.
+* user-service - (will be implemented next) - Manages users, roles and permissions.
 https://github.com/sorrrrrin/store-user-service
 
 * infrastructure - Manages devops infrastructure configurations (work in progress)
 https://github.com/sorrrrrin/store-infrastructure
 
 TODO next:
-* Exception handling (+tests) - Work in progress (1/2 DONE)
-* Tests (unit & integration tests with Junit & Mockito)
-* Add basic functionality to user-service
+* Add functionality to user-service
 * Add JWT token authentication & authorization with Spring default security on USERS and AUTHORITIES tables (+ tests)
 
 Tech stack:
@@ -44,12 +42,13 @@ Tech stack:
 
 REST API best practices covered:
 * Exception handling - DONE
-* Documentation (OpenAPI/Swagger) - DONE 
+* Documentation (OpenAPI/Swagger) - DONE
+* Tests (unit & integration tests with Junit & Mockito) DONE
 * Security - Work In Progress
-* Test in development with tools like Postman - DONE
+* Development testing, with tools like Postman - DONE
 * Use HTTP Request Methods (POST, GET, PUT, PATCH, DELETE) - DONE
 * Use HTTP Response status (200, 404, ...) - DONE
-* Use nouns (plural form) for resource names - DONE
+* Use nouns at plural form for resource names - DONE
 * Don't send secure info in URI - DONE
 
 Microservice Architecture design patterns covered:
