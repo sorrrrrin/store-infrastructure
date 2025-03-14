@@ -1,5 +1,4 @@
 @echo off
--- first start Docker
 --start cmd /k "echo minikube stop && minikube stop"
 --timeout /t 30 /nobreak
 start cmd /k "echo minikube start  --memory=6g && minikube start  --memory=6g"
