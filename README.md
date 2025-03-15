@@ -1,21 +1,17 @@
 # store-infrastructure
 
-Microservices:
-* For demo purposes, it is a store application with 3 microservices:
+### Microservices architecture for demo purposes, it is a store application with 3 microservices:
 
-* catalog-service - Manages products, categories and inventory.
-https://github.com/sorrrrrin/store-catalog-service
+* catalog-service - Manages products, categories and inventory.<br>
+  https://github.com/sorrrrrin/store-catalog-service
+* order-service - Manages orders, order items and order status.<br>
+  https://github.com/sorrrrrin/store-order-service
+* user-service - Manages users with admin and customer roles and also login and logout with JWT token.<br>
+  https://github.com/sorrrrrin/store-user-service
+* infrastructure - Manages devops infrastructure configurations.<br>
+  https://github.com/sorrrrrin/store-infrastructure
 
-* order-service - Manages orders, order items and order status.
-https://github.com/sorrrrrin/store-order-service
-
-* user-service - Manages users with admin and customer roles and also login and logout with JWT token.
-https://github.com/sorrrrrin/store-user-service
-
-* infrastructure - Manages devops infrastructure configurations
-https://github.com/sorrrrrin/store-infrastructure
-
-Tech stack:
+### Tech stack:
 * Java 17
 * Maven
 * Spring Boot
@@ -31,12 +27,12 @@ Tech stack:
 * Rest API - for microservice synchronous communication and frontend
 * OpenAPI/Swagger - for documentation
 * Elastic search & Spring Data Elastic for indexing and searching products
-* Elastic Stack (Elasticsearch, Logstash, Kibana) - for logs monitoring 
+* Elastic Stack (Elasticsearch, Logstash, Kibana) - for logs monitoring
 * Prometheus & Grafana for metrics and traces monitoring
 * Lombock - generates boilerplate code
 * MapStruct - generates mappers between entities and Dtos objects
 
-REST API best practices covered:
+### REST API best practices covered:
 * Exception handling - DONE
 * Documentation (OpenAPI/Swagger) - DONE
 * Tests (unit & integration tests with Junit & Mockito) DONE
@@ -47,11 +43,39 @@ REST API best practices covered:
 * Use nouns at plural form for resource names - DONE
 * Don't send secure info in URI - DONE
 
-Microservice Architecture design patterns covered:
-* Work in progress
+### Microservice Architecture design patterns covered:
+* Service Decomposition Patterns
+    * Used domain-driven design (DDD) - DONE <p style="font-size:10px;">Each microservice represents a specific business function or capability (e.g., Catalog Management, Order Management, User Management)
+* Service Communication Patterns
+    * Asynchronous Communication with Kafka - DONE <p style="font-size:10px;">Services use event bus asynchronous communication with Kafka. This helps decouple services and ensures eventual consistency.
+    * Synchronous Communication with REST API - DONE <p style="font-size:10px;">Microservices also communicate using HTTP via REST APIs. This is commonly used for real-time data exchanges.
+* Data Management Patterns
+    * Database per Service - DONE <p style="font-size:10px;">Each microservice manages its own database to ensure independence and avoid tight coupling.
+* Security Patterns
+    * Authentication and Authorization - DONE <p style="font-size:10px;">Used JWT (Json web token) for secure authentication and authorization between services, ensuring that users and services interact securely.
+* Deployment and and CI/CD Patterns
+    * Containerization - DONE <p style="font-size:10px;">Microservices are deployed in Docker containers to ensure consistency and portability across environments.
+    * Orchestration - DONE <p style="font-size:10px;">Used Kubernetes for managing containerized services, enabling auto-scaling, self-healing, and load balancing.
+    * CI/CD Pipelines - TODO <p style="font-size:10px;">Automate build, test, and deploy processes using Jenkins, GitLab CI/CD or GitHub Actions.
+* Observability Patterns
+    * Centralized Logging - DONE <p style="font-size:10px;">Elastic Stack (Elasticsearch, Logstash, Kibana) aggregates logs from all microservices into a single repository for easier analysis and monitoring.
+    * Metrics and Monitoring - DONE <p style="font-size:10px;">Prometheus and Grafana with Spring micrometer library are used collect and visualize metrics, ensuring that you can monitor the health of the services in real-time.
+    * Tracing - TODO <p style="font-size:10px;">To track a request's journey through multiple microservices, helping diagnose performance bottlenecks and service failures.
+* Resilience Patterns
+    * Circuit Breaker Pattern - TODO <p style="font-size:10px;">Prevents failures from cascading through the system by halting calls to a service that is experiencing issues, allowing it time to recover.
+    * Retry Pattern - TODO <p style="font-size:10px;">In case of failure, services automatically retry requests to a service, often with exponential backoff, to handle temporary issues.
+    * Fallback Pattern - TODO <p style="font-size:10px;">Provides a default response or an alternative action when a service call fails, ensuring that the system remains responsive even in case of failures.
+    * Rate Limiting Pattern - TODO <p style="font-size:10px;">This pattern protects microservices from excessive load and ensures fair distribution of resources by limiting the rate at which requests can be made to a service. It is especially useful for public-facing APIs.
+* Scalability and performance Patterns
+    * Load Balancing - TODO <p style="font-size:10px;">Will be easy done with Kubernetes, to distributes incoming traffic across multiple instances of microservices, improving reliability and scalability.
+    * Caching - TODO <p style="font-size:10px;">Use caching layers like Redis or Memcached to reduce latency.
+    * Horizontal Scaling - TODO <p style="font-size:10px;">Scale services by adding more instances rather than increasing hardware capacity.
+    * Sharding - TODO <p style="font-size:10px;">Data is partitioned into smaller chunks (shards), and each microservice handles a subset of the data to scale horizontally. Look for database replicas and partitioning in cloud provides like AWS, GCP, etc.
 
-To be added later:
-* Frontend (React) 
-* CI/CD pipeline
+
+
+### To be added later:
+* Frontend (React)
 * Deployment to cloud (AWS/ GCP)
-...
+* CI/CD pipeline
+  ...
