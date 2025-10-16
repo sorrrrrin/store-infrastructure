@@ -23,29 +23,29 @@ jobs:
 
       - name: Create .env on EC2 from secrets
         run: |
-          ssh -o StrictHostKeyChecking=no ec2-user@13.49.123.145 cat \> /home/ec2-user/.env <<EOF
-POSTGRES_USER=postgres
-POSTGRES_PASSWORD=${{ secrets.ENV_POSTGRES_PASSWORD }}
-POSTGRES_DB=postgres
-USER_DB_URL=jdbc:postgresql://postgres:5432/user
-CATALOG_DB_URL=jdbc:postgresql://postgres:5432/catalog
-ORDER_DB_URL=jdbc:postgresql://postgres:5432/order
-SPRING_DATASOURCE_USERNAME=postgres
-SPRING_DATASOURCE_PASSWORD=${{ secrets.ENV_POSTGRES_PASSWORD }}
-SECURITY_USER_PASSWORD=${{ secrets.ENV_SECURITY_USER_PASSWORD }}
-SECURITY_JWT_SECRET_KEY=${{ secrets.ENV_JWT_SECRET_KEY }}
-SPRING_DATASOURCE_DRIVER_CLASS_NAME=org.postgresql.Driver
-SPRING_JPA_HIBERNATE_DDL_AUTO=update
-SPRING_JPA_SHOW_SQL=true
-SPRING_JPA_PROPERTIES_HIBERNATE_FORMAT_SQL=true
-SPRING_KAFKA_BOOTSTRAP_SERVERS=my-cluster-kafka-bootstrap.kafka:9092
-SPRING_SECURITY_ENABLED=false
-SECURITY_IGNORED=/**
-SECURITY_BASIC_ENABLED=false
-SECURITY_USER_NAME=user
-SPRING_PROFILES_ACTIVE=dev
-JAVA_OPTS=-Xms128m -Xmx256m
-EOF
+          ssh -o StrictHostKeyChecking=no ec2-user@13.49.123.145 "
+            echo 'POSTGRES_USER=postgres' > /home/ec2-user/.env
+            echo 'POSTGRES_PASSWORD=${{ secrets.ENV_POSTGRES_PASSWORD }}' >> /home/ec2-user/.env
+            echo 'POSTGRES_DB=postgres' >> /home/ec2-user/.env
+            echo 'USER_DB_URL=jdbc:postgresql://postgres:5432/user' >> /home/ec2-user/.env
+            echo 'CATALOG_DB_URL=jdbc:postgresql://postgres:5432/catalog' >> /home/ec2-user/.env
+            echo 'ORDER_DB_URL=jdbc:postgresql://postgres:5432/order' >> /home/ec2-user/.env
+            echo 'SPRING_DATASOURCE_USERNAME=postgres' >> /home/ec2-user/.env
+            echo 'SPRING_DATASOURCE_PASSWORD=${{ secrets.ENV_POSTGRES_PASSWORD }}' >> /home/ec2-user/.env
+            echo 'SECURITY_USER_PASSWORD=${{ secrets.ENV_SECURITY_USER_PASSWORD }}' >> /home/ec2-user/.env
+            echo 'SECURITY_JWT_SECRET_KEY=${{ secrets.ENV_JWT_SECRET_KEY }}' >> /home/ec2-user/.env
+            echo 'SPRING_DATASOURCE_DRIVER_CLASS_NAME=org.postgresql.Driver' >> /home/ec2-user/.env
+            echo 'SPRING_JPA_HIBERNATE_DDL_AUTO=update' >> /home/ec2-user/.env
+            echo 'SPRING_JPA_SHOW_SQL=true' >> /home/ec2-user/.env
+            echo 'SPRING_JPA_PROPERTIES_HIBERNATE_FORMAT_SQL=true' >> /home/ec2-user/.env
+            echo 'SPRING_KAFKA_BOOTSTRAP_SERVERS=my-cluster-kafka-bootstrap.kafka:9092' >> /home/ec2-user/.env
+            echo 'SPRING_SECURITY_ENABLED=false' >> /home/ec2-user/.env
+            echo 'SECURITY_IGNORED=/**' >> /home/ec2-user/.env
+            echo 'SECURITY_BASIC_ENABLED=false' >> /home/ec2-user/.env
+            echo 'SECURITY_USER_NAME=user' >> /home/ec2-user/.env
+            echo 'SPRING_PROFILES_ACTIVE=dev' >> /home/ec2-user/.env
+            echo 'JAVA_OPTS=-Xms128m -Xmx256m' >> /home/ec2-user/.env
+          "
 
       - name: Deploy with Docker Compose on EC2
         run: |
