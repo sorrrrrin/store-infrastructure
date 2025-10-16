@@ -47,6 +47,14 @@ jobs:
             echo 'JAVA_OPTS=-Xms128m -Xmx256m' >> /home/ec2-user/.env
           "
 
+      - name: Docker login to GHCR on EC2
+        run: |
+          ssh -o StrictHostKeyChecking=no ec2-user@13.49.123.145 "echo '${{ secrets.GHCR_TOKEN }}' | docker login ghcr.io -u ${{ github.actor }} --password-stdin"
+
+      - name: Remove duplicate compose file on EC2
+        run: |
+          ssh -o StrictHostKeyChecking=no ec2-user@13.49.123.145 "rm -f /home/ec2-user/docker-compose.yaml"
+
       - name: Deploy with Docker Compose on EC2
         run: |
           ssh -o StrictHostKeyChecking=no ec2-user@13.49.123.145 '
