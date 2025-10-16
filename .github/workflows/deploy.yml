@@ -23,8 +23,7 @@ jobs:
 
       - name: Create .env on EC2 from secrets
         run: |
-          ssh -o StrictHostKeyChecking=no ec2-user@13.49.123.145 '
-            cat > /home/ec2-user/.env <<EOF
+          ssh -o StrictHostKeyChecking=no ec2-user@13.49.123.145 cat \> /home/ec2-user/.env <<EOF
 POSTGRES_USER=postgres
 POSTGRES_PASSWORD=${{ secrets.ENV_POSTGRES_PASSWORD }}
 POSTGRES_DB=postgres
@@ -47,7 +46,6 @@ SECURITY_USER_NAME=user
 SPRING_PROFILES_ACTIVE=dev
 JAVA_OPTS=-Xms128m -Xmx256m
 EOF
-          '
 
       - name: Deploy with Docker Compose on EC2
         run: |
