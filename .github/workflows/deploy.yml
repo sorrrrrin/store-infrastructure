@@ -1,0 +1,58 @@
+name: Deploy to EC2 with Docker Compose
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout infrastructure repo
+        uses: actions/checkout@v4
+
+      - name: Set up SSH key
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.K3S_EC2_SSH_KEY }}
+
+      - name: Copy docker-compose.yaml to EC2
+        run: |
+          rsync -avz -e "ssh -o StrictHostKeyChecking=no" docker-compose.yaml ec2-user@13.49.123.145:/home/ec2-user/
+
+      - name: Create .env on EC2 from secrets
+        run: |
+          ssh -o StrictHostKeyChecking=no ec2-user@13.49.123.145 '
+            cat > /home/ec2-user/.env <<EOF
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=${{ secrets.ENV_POSTGRES_PASSWORD }}
+POSTGRES_DB=postgres
+USER_DB_URL=jdbc:postgresql://postgres:5432/user
+CATALOG_DB_URL=jdbc:postgresql://postgres:5432/catalog
+ORDER_DB_URL=jdbc:postgresql://postgres:5432/order
+SPRING_DATASOURCE_USERNAME=postgres
+SPRING_DATASOURCE_PASSWORD=${{ secrets.ENV_POSTGRES_PASSWORD }}
+SECURITY_USER_PASSWORD=${{ secrets.ENV_SECURITY_USER_PASSWORD }}
+SECURITY_JWT_SECRET_KEY=${{ secrets.ENV_JWT_SECRET_KEY }}
+SPRING_DATASOURCE_DRIVER_CLASS_NAME=org.postgresql.Driver
+SPRING_JPA_HIBERNATE_DDL_AUTO=update
+SPRING_JPA_SHOW_SQL=true
+SPRING_JPA_PROPERTIES_HIBERNATE_FORMAT_SQL=true
+SPRING_KAFKA_BOOTSTRAP_SERVERS=my-cluster-kafka-bootstrap.kafka:9092
+SPRING_SECURITY_ENABLED=false
+SECURITY_IGNORED=/**
+SECURITY_BASIC_ENABLED=false
+SECURITY_USER_NAME=user
+SPRING_PROFILES_ACTIVE=dev
+JAVA_OPTS=-Xms128m -Xmx256m
+EOF
+          '
+
+      - name: Deploy with Docker Compose on EC2
+        run: |
+          ssh -o StrictHostKeyChecking=no ec2-user@13.49.123.145 '
+            cd /home/ec2-user && \
+            docker compose pull && \
+            docker compose up -d --remove-orphans
+          '
