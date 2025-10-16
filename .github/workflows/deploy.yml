@@ -58,6 +58,15 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no ec2-user@13.49.123.145 "rm -f /home/ec2-user/docker-compose.yaml"
 
+      - name: Cleanup Docker and logs on EC2
+        run: |
+          ssh -o StrictHostKeyChecking=no ec2-user@13.49.123.145 '
+            docker system prune -af
+            docker volume prune -f
+            sudo journalctl --vacuum-time=2d || true
+            sudo rm -rf /var/log/*.gz /var/log/*.[0-9] || true
+          '
+
       - name: Deploy with Docker Compose on EC2
         run: |
           ssh -o StrictHostKeyChecking=no ec2-user@13.49.123.145 '
