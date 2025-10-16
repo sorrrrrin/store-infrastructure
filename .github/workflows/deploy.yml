@@ -62,5 +62,5 @@ jobs:
           ssh -o StrictHostKeyChecking=no ec2-user@13.49.123.145 '
             cd /home/ec2-user && \
             docker compose pull && \
-            docker compose up -d --remove-orphans
+            docker compose up -d --remove-orphans --pull always
           '
