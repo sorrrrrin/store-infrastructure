@@ -32,6 +32,14 @@
 * Lombock - generates boilerplate code
 * MapStruct - generates mappers between entities and Dtos objects
 
+### CI/CD Pipeline
+* https://github.com/sorrrrrin/store-infrastructure/actions
+
+### Deployed to AWS (EC2 instance with Docker Compose)
+* http://13.49.123.145:8082/swagger-ui/index.html - User Service 
+* http://13.49.123.145:8080/swagger-ui/index.html - Catalog Service
+* http://13.49.123.145:8081/swagger-ui/index.html - Order Service
+
 ### REST API best practices covered:
 * Exception handling - DONE
 * Documentation (OpenAPI/Swagger) - DONE
@@ -56,7 +64,7 @@
 * Deployment and and CI/CD Patterns
   * Containerization - DONE <p style="font-size:10px;">Microservices are deployed in Docker containers to ensure consistency and portability across environments.</p>
   * Orchestration - DONE <p style="font-size:10px;">Used Kubernetes for managing containerized services, enabling auto-scaling, self-healing, and load balancing.</p>
-  * CI/CD Pipelines - TODO <p style="font-size:10px;">Automate build, test, and deploy processes using Jenkins, GitLab CI/CD or GitHub Actions.</p>
+  * CI/CD Pipelines - DONE <p style="font-size:10px;">Automate build, test, and deploy processes using Jenkins, GitLab CI/CD or GitHub Actions.</p>
 * Observability Patterns
   * Centralized Logging - DONE <p style="font-size:10px;">Elastic Stack (Elasticsearch, Logstash, Kibana) aggregates logs from all microservices into a single repository for easier analysis and monitoring.</p>
   * Metrics and Monitoring - DONE <p style="font-size:10px;">Prometheus and Grafana with Spring micrometer library are used collect and visualize metrics, ensuring that you can monitor the health of the services in real-time.</p>
@@ -74,6 +82,4 @@
 
 ### To be added later:
 * Frontend (React)
-* Deployment to cloud (AWS/ GCP)
-* CI/CD pipeline
   ...
