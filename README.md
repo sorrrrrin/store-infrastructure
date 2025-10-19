@@ -11,6 +11,12 @@
 * infrastructure - Manages devops infrastructure configurations.<br>
   https://github.com/sorrrrrin/store-infrastructure
 
+### Deployed to AWS (EC2 instance with Docker Compose)
+* http://13.49.123.145:8082/swagger-ui/index.html - User Service
+* http://13.49.123.145:8080/swagger-ui/index.html - Catalog Service
+* http://13.49.123.145:8081/swagger-ui/index.html - Order Service
+
+
 ### Tech stack:
 * Java 17
 * Maven
@@ -34,11 +40,6 @@
 
 ### CI/CD Pipeline
 * https://github.com/sorrrrrin/store-infrastructure/actions
-
-### Deployed to AWS (EC2 instance with Docker Compose)
-* http://13.49.123.145:8082/swagger-ui/index.html - User Service 
-* http://13.49.123.145:8080/swagger-ui/index.html - Catalog Service
-* http://13.49.123.145:8081/swagger-ui/index.html - Order Service
 
 ### REST API best practices covered:
 * Exception handling - DONE
