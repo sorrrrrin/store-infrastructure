@@ -11,6 +11,11 @@
 * infrastructure - Manages devops infrastructure configurations.<br>
   https://github.com/sorrrrrin/store-infrastructure
 
+
+### CI/CD Pipeline
+* https://github.com/sorrrrrin/store-infrastructure/actions
+
+
 ### Deployed to AWS (EC2 instance with Docker Compose)
 * http://13.49.123.145:8082/swagger-ui/index.html - User Service
 * http://13.49.123.145:8080/swagger-ui/index.html - Catalog Service
@@ -37,9 +42,6 @@
 * Prometheus & Grafana for metrics and traces monitoring
 * Lombock - generates boilerplate code
 * MapStruct - generates mappers between entities and Dtos objects
-
-### CI/CD Pipeline
-* https://github.com/sorrrrrin/store-infrastructure/actions
 
 ### REST API best practices covered:
 * Exception handling - DONE
