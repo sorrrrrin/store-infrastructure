@@ -1,7 +1,6 @@
 # store-infrastructure
 
 ### Microservices architecture for demo purposes, it is a store application with 3 microservices:
-
 * catalog-service - Manages products, categories and inventory.<br>
   https://github.com/sorrrrrin/store-catalog-service
 * order-service - Manages orders, order items and order status.<br>
