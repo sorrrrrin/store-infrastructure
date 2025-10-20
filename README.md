@@ -11,8 +11,11 @@
   https://github.com/sorrrrrin/store-infrastructure
 
 
-### CI/CD Pipeline
-* https://github.com/sorrrrrin/store-infrastructure/actions
+### CI/CD Pipelines
+* https://github.com/sorrrrrin/store-user-service/actions - CI
+* https://github.com/sorrrrrin/store-catalog-service/actions - CI
+* https://github.com/sorrrrrin/store-order-service/actions - CI
+* https://github.com/sorrrrrin/store-infrastructure/actions - CD
 
 
 ### Deployed to AWS (EC2 instance with Docker Compose)
