@@ -85,5 +85,11 @@ services:
       SPRING_PROFILES_ACTIVE: ${SPRING_PROFILES_ACTIVE}
       JAVA_OPTS: ${JAVA_OPTS}
 
+  store-web-ui:
+    image: ghcr.io/sorrrrrin/store-web-ui:latest
+    ports:
+      - "80:80"
+    restart: unless-stopped
+
 volumes:
   postgres_data:
