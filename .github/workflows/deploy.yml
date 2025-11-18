@@ -18,9 +18,9 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.K3S_EC2_SSH_KEY }}
 
-      - name: Copy docker-compose.yaml to EC2
+      - name: Copy docker-compose to EC2
         run: |
-          rsync -avz -e "ssh -o StrictHostKeyChecking=no" docker-compose.yaml ec2-user@13.49.123.145:/home/ec2-user/
+          rsync -avz -e "ssh -o StrictHostKeyChecking=no" docker-compose.yaml ec2-user@13.49.123.145:/home/ec2-user/docker-compose.yml
 
       - name: Create .env on EC2 from secrets
         run: |
@@ -52,10 +52,6 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no ec2-user@13.49.123.145 "echo '${{ secrets.GHCR_TOKEN }}' | docker login ghcr.io -u ${{ github.actor }} --password-stdin"
 
-      - name: Remove duplicate compose file on EC2
-        run: |
-          ssh -o StrictHostKeyChecking=no ec2-user@13.49.123.145 "rm -f /home/ec2-user/docker-compose.yaml"
-
       - name: Cleanup Docker and logs on EC2
         run: |
           ssh -o StrictHostKeyChecking=no ec2-user@13.49.123.145 '
@@ -69,6 +65,6 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no ec2-user@13.49.123.145 '
             cd /home/ec2-user && \
-            docker compose pull && \
-            docker compose up -d --remove-orphans --pull always
+            docker compose -f docker-compose.yml pull && \
+            docker compose -f docker-compose.yml up -d --remove-orphans --pull always
           '
